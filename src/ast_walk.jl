@@ -430,6 +430,10 @@ function from_expr_helper(ast::Expr,
         for i = 1:length(args)
             args[i] = from_expr(args[i], depth, callback, cbdata, top_level_number, false, read)
         end
+    elseif head == :inert
+        for i = 1:length(args)
+            args[i] = from_expr(args[i], depth, callback, cbdata, top_level_number, false, read)
+        end
     else
         throw(string("CompilerTools.AstWalker.from_expr: unknown Expr head :", head, " in ", ast))
     end
